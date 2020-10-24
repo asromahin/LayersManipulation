@@ -1,4 +1,3 @@
-
 from layers import MLayer, MLayerList
 
 
@@ -52,3 +51,10 @@ class LayersManipulation:
             n_layer = new_module(layer.layer)
             layer.change_module(n_layer)
         self.refresh()
+
+    def apply_for_layers(self, new_module, layers=None):
+        if layers is None:
+            layers = self.layers
+        for layer in layers:
+            n_layer = new_module(layer.layer)
+            layer.change_module(n_layer)
