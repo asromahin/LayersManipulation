@@ -33,17 +33,19 @@ def get_add_in_list(set_block, call_after=True, set_index=-1, after_set=True):
             super(AddLayerInList, self).__init__()
             self.old_list = old_list
             self.new_block = new_block
+            if index == -1:
+                index = len(old_list)-1
             self.index = index
-            self.new_list = self.create_new_list(self.old_list, self.new_block, index)
+            self.new_list = self.create_new_list(self.old_list, self.new_block, self.index)
 
-        def create_new_list(self, old_list, set_block, index):
+        def create_new_list(self, old_list, new_block, index):
             new_list = torch.nn.ModuleList()
             for i, layer in enumerate(old_list):
                 if i == index and not after_set:
-                    new_list.append(set_block)
+                    new_list.append(new_block)
                 new_list.append(layer)
                 if i == index and after_set:
-                    new_list.append(set_block)
+                    new_list.append(new_block)
             return new_list
 
         def forward(self, *args):
