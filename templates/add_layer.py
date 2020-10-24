@@ -31,12 +31,9 @@ def get_add_in_list(set_block, call_after=True, set_index=-1, after_set=True):
                 index=set_index,
         ):
             super(AddLayerInList, self).__init__()
-            self.old_list = old_list
-            self.new_block = new_block
             if index == -1:
                 index = len(old_list)-1
-            self.index = index
-            self.new_list = self.create_new_list(self.old_list, self.new_block, self.index)
+            self.new_list = self.create_new_list(old_list, new_block, index)
 
         def create_new_list(self, old_list, new_block, index):
             new_list = torch.nn.ModuleList()
@@ -49,11 +46,7 @@ def get_add_in_list(set_block, call_after=True, set_index=-1, after_set=True):
             return new_list
 
         def forward(self, *args):
-            if call_after is False:
-                args = self.new_block(args)
-            args = self.old_block(*args)
-            if call_after:
-                args = self.new_block(*args)
+            args = self.new_list(*args)
             return args
 
     return AddLayerInList
