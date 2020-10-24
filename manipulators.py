@@ -55,9 +55,11 @@ class LayersManipulation:
             for layer in self.groups[group_name]:
                 n_layer = new_module(layer.layer)
                 layer.change_module(n_layer)
+        self.refresh()
 
     def change_group_layer(self, group_name, new_module, index):
         if self._is_group_exists(group_name):
             layer = self.groups[group_name][index]
             n_layer = new_module(layer.layer)
             layer.change_module(n_layer)
+        self.refresh()
