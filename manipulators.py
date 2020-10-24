@@ -17,6 +17,7 @@ class LayersManipulation:
 
     def _read_model(self, m, parent_path=''):
         all_layers = []
+        #path = ''
         for key in dir(m):
             value = getattr(m, key)
             str_key = str(type(value))
@@ -26,7 +27,7 @@ class LayersManipulation:
                     layer = MLayer(key, m, value, path)
                     all_layers.append(layer)
         for n, ch in m.named_children():
-            all_layers += self._read_model(ch)
+            all_layers += self._read_model(ch, path)
         return all_layers
 
     def _group_layers(self, layers):
