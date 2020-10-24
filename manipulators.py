@@ -15,14 +15,15 @@ class LayersManipulation:
         self.groups = self._group_layers(self.layers)
         self.groups_keys = list(self.groups.keys())
 
-    def _read_model(self, m):
+    def _read_model(self, m, parent_path=''):
         all_layers = []
         for key in dir(m):
             value = getattr(m, key)
             str_key = str(type(value))
             if not 'method' in str_key:
                 if '_modules' in dir(value):
-                    layer = MLayer(key, m, value)
+                    path = '/'.join(parent_path, key)
+                    layer = MLayer(key, m, value, path)
                     all_layers.append(layer)
         for n, ch in m.named_children():
             all_layers += self._read_model(ch)

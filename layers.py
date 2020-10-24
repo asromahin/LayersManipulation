@@ -2,7 +2,7 @@ import torch
 
 
 class MLayer:
-    def __init__(self, key, parent_layer, layer):
+    def __init__(self, key, parent_layer, layer, path=''):
         self.key = key
         self.parent_layer = parent_layer
         self.layer = layer
