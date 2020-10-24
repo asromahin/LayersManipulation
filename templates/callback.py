@@ -1,6 +1,10 @@
 import torch
 
 
+def callback_pass(x):
+    return x
+
+
 class CallbackLayer(torch.nn.Module):
     def __init__(
             self,
@@ -17,6 +21,5 @@ class CallbackLayer(torch.nn.Module):
         return x
 
 
-def callback_pass(x):
-    return x
+
 
