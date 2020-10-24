@@ -37,7 +37,7 @@ class MLayerList(list):
     def append(self, layer: MLayer) -> None:
         super(MLayerList, self).append(layer)
 
-    def _group_layers(self):
+    def group_layers(self):
         res_dict = {}
         for layer in self:
             #str_key = only_chars(layer.key)

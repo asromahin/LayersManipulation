@@ -12,7 +12,7 @@ class LayersManipulation:
 
     def read_model(self):
         self.layers = self._read_model(self.model)
-        self.groups = self.layers._group_layers(self.layers)
+        self.groups = self.layers.group_layers()
         self.groups_keys = list(self.groups.keys())
 
     def _read_model(self, m, parent_path=''):
