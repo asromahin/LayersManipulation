@@ -1,4 +1,4 @@
-from utils import only_chars
+
 from layers import MLayer, MLayerList
 
 
@@ -12,7 +12,7 @@ class LayersManipulation:
 
     def read_model(self):
         self.layers = self._read_model(self.model)
-        self.groups = self._group_layers(self.layers)
+        self.groups = self.layers._group_layers(self.layers)
         self.groups_keys = list(self.groups.keys())
 
     def _read_model(self, m, parent_path=''):
@@ -29,17 +29,6 @@ class LayersManipulation:
         for n, ch in m.named_children():
             all_layers += self._read_model(ch, path)
         return all_layers
-
-    def _group_layers(self, layers):
-        res_dict = {}
-        for layer in layers:
-            str_key = only_chars(layer.key)
-            data = res_dict.get(str_key)
-            if data is None:
-                res_dict[str_key] = [layer]
-            else:
-                res_dict[str_key].append(layer)
-        return res_dict
 
     def _is_group_exists(self, group_name):
         if group_name in self.groups_keys:
