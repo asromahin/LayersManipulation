@@ -5,7 +5,7 @@ def callback_pass(x):
     return x
 
 
-def get_callback_layer(callback_function=callback_pass):
+def get_callback_layer(callback_function=callback_pass, call_after=True):
     class CallbackLayer(torch.nn.Module):
         def __init__(
                 self,
@@ -17,8 +17,11 @@ def get_callback_layer(callback_function=callback_pass):
             self.callback = callback
 
         def forward(self, *args):
+            if call_after is False:
+                args = self.callback(args)
             x = self.old_block(*args)
-            x = self.callback(x)
+            if call_after:
+                x = self.callback(x)
             return x
     return CallbackLayer
 
