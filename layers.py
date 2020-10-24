@@ -29,5 +29,5 @@ class MLayerList(list):
     def __init__(self):
         pass
 
-    def append(self, MLayer: T) -> None:
-        super(MLayerList, self).append(T)
+    def append(self, layer: MLayer) -> None:
+        super(MLayerList, self).append(layer)
