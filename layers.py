@@ -7,6 +7,7 @@ class MLayer:
         self.parent_layer = parent_layer
         self.layer = layer
         self.is_list = type(self.layer) == torch.nn.ModuleList
+        self.path = path
 
     def get_children(self):
         children = []
