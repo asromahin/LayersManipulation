@@ -22,7 +22,7 @@ class LayersManipulation:
             str_key = str(type(value))
             if not 'method' in str_key:
                 if '_modules' in dir(value):
-                    path = '/'.join(parent_path, key)
+                    path = '/'.join([parent_path, key])
                     layer = MLayer(key, m, value, path)
                     all_layers.append(layer)
         for n, ch in m.named_children():
