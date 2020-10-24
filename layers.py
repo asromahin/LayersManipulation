@@ -23,3 +23,11 @@ class MLayer:
             setattr(self.parent_layer, self.key, new_module)
         else:
             raise Exception('You try change the list!')
+
+
+class MLayerList(list):
+    def __init__(self):
+        pass
+
+    def append(self, MLayer: T) -> None:
+        super(MLayerList, self).append(T)

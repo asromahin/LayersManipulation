@@ -1,5 +1,5 @@
 from utils import only_chars
-from layers import MLayer
+from layers import MLayer, MLayerList
 
 
 class LayersManipulation:
@@ -16,7 +16,7 @@ class LayersManipulation:
         self.groups_keys = list(self.groups.keys())
 
     def _read_model(self, m, parent_path=''):
-        all_layers = []
+        all_layers = MLayerList()
         path = ''
         for key in dir(m):
             value = getattr(m, key)
