@@ -17,7 +17,7 @@ class LayersManipulation:
 
     def _read_model(self, m, parent_path=''):
         all_layers = []
-        #path = ''
+        path = ''
         for key in dir(m):
             value = getattr(m, key)
             str_key = str(type(value))
