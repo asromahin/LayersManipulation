@@ -22,7 +22,7 @@ def get_add(set_block, call_after=True):
     return AddLayer
 
 
-def get_add(set_block, call_after=True, set_index=-1, after_set=True):
+def get_add_in_list(set_block, call_after=True, set_index=-1, after_set=True):
     class AddLayerInList(torch.nn.Module):
         def __init__(
                 self,
