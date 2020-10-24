@@ -24,10 +24,10 @@ class MLayer:
         return str(type(self))+'_'.join([self.key])
 
     def change_module(self, new_module):
-        if not self.is_list:
-            setattr(self.parent_layer, self.key, new_module)
-        else:
-            raise Exception('You try change the list!')
+        #if not self.is_list:
+        setattr(self.parent_layer, self.key, new_module)
+        #else:
+        #    raise Exception('You try change the list!')
 
 
 class MLayerList(list):
